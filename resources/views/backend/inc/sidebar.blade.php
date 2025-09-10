@@ -38,7 +38,7 @@
         </a>
       </li>
       <li class="menu-item">
-        <a href="{{ route('dashboard') }}" class="menu-link">
+        <a href="{{ route('comments.index') }}" class="menu-link">
           <i class="menu-icon icon-base ri ri-chat-3-line"></i>
           <div data-i18n="Dashboards">Public Opinion</div>
         </a>

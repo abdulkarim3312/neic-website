@@ -28,6 +28,6 @@ class MenuCategory extends Model
 
     public function menus()
     {
-        return $this->hasMany(Menu::class, 'menu_category_id')->where('status', 1)->orderBy('id');
+        return $this->hasMany(Menu::class, 'menu_category_id')->where('status', 1);
     }
 }

@@ -16,7 +16,7 @@ Route::controller(HomeController::class)->group(function () {
 
 Route::post('/store', [FrontPublicOpinionController::class, 'store'])->name('comment.store');
 
-Route::get('/person-details', [HomeController::class, 'details'])->name('person_details');
+Route::get('/person-details/{id}', [HomeController::class, 'details'])->name('person_details');
 Route::get('/contact-page', [HomeController::class, 'contactPage'])->name('contact_page');
 Route::get('/comment-page', [HomeController::class, 'commentPage'])->name('comment_page');
 
