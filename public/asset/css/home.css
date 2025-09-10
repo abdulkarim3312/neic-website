@@ -1,0 +1,590 @@
+    .nav .menu ul li:nth-child(1) a {
+        color: #0900ff;
+    }
+    .heroarea {
+        display: block;
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .slideBox {
+        width: calc(100% - 270px);
+        height: 400px;
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 6px -4px #000;
+        padding: 5px;
+        float: left;
+        overflow: hidden;
+    }
+
+    .slideBox .slide {
+        width: 100%;
+        height: 100%;
+    }
+
+    .slideBox .slide img {
+        width: 100%;
+        height: 390px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: grab;
+    }
+
+
+     .slideBox .slick-dots {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 0;
+        list-style-type: none;
+        z-index: 1000;
+        position: absolute;
+        left: 50%;
+        bottom: -20px;
+        transform: translate(-50%,0);
+    }
+
+    .slideBox .slick-dots li {
+        margin: 0 0.25rem;
+    }
+
+    .slideBox .slick-dots button {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        padding: 0;
+        border: none;
+        border-radius: 100%;
+        background-color: orange !important;
+        text-indent: -9999px;
+    }
+
+    .slideBox .slick-dots li.slick-active button {
+        background-color: blue !important;
+    }
+
+
+    .CampaignBox {
+        width: 250px;
+        height: 400px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 6px -4px #000;
+        float: right;
+        padding: 10px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    .CampaignBox a {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        color: #fff;
+        background: #34313a;
+        padding: 15px 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 20px;
+        transition: .3s linear;
+    }
+
+    .CampaignBox a:hover {
+        background: #000;
+        color: #fff;
+        transition: .3s linear;
+    }
+
+    .CampaignBox a i {
+        margin-right: 10px;
+    }
+
+    .categoris {
+        margin-top: 20px;
+        float: left;
+        width: 100%;
+    }
+
+    .categoris .categoryBox {
+        width: calc(100% / 5 - 20px);
+        height: auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 6px -4px #000;
+        float: left;
+        margin: 0 10px;
+        text-align: center;
+        padding: 20px;
+        transition: .5s ease-in-out;
+    }
+
+    .categoris .categoryBox:first-child {
+        width: calc(100% / 5 - 10px);
+        margin-left: 0;
+    }
+
+    .categoris .categoryBox:last-child {
+        width: calc(100% / 5 - 10px);
+        margin-right: 0;
+    }
+
+    .categoris .categoryBox:hover {
+        background-image: linear-gradient(180deg, #fffbf5 0%, #e5f3e678 100%) !important;
+        transition: .5s ease-in-out;
+    }
+
+    .categoris .categoryBox img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        margin-right: 10px;
+        float: left;
+    }
+
+    .categoris .categoryBox span {
+        display: block;
+        font-size: 22px;
+        color: #000;
+        font-weight: 500;
+        float: left;
+        line-height: 50px;
+    }
+
+    .productBox {
+        width: 100%;
+        margin-top: 20px;
+        width: 100%;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 6px -4px #000;
+        padding: 20px;
+    }
+
+    .productBoxHeader {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .productBoxHeader h2 {
+        font-size: 25px;
+        color: #000;
+    }
+
+    .productBoxHeader a {
+        color: #222836;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: .3s linear;
+        font-size: 14px;
+        border: 1px solid #e5e5e5;
+        padding: 5px 20px;
+    }
+
+    .productBoxHeader a:hover {
+        background: #222836;
+        color: #fff;
+        transition: .3s linear;
+    }
+
+    .productBox {
+        width: 100%;
+        float: left;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 6px -4px #000;
+        padding: 20px;
+        margin-top: 25px;
+    }
+
+    .productCardRow {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .productCard {
+        width: calc(20% - 20px);
+        float: left;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 15px;
+        text-decoration: none;
+        color: #000;
+        transition: .3s linear;
+        margin: 10px;
+        overflow: hidden;
+        position: relative;
+        display: block;
+    }
+
+    .productCard:hover {
+        box-shadow: 0 0 10px -4px #00000096;
+        transition: .3s linear;
+    }
+
+    .productCard:hover.productCard img  {
+        transform: scale(1.05);
+        transition: .3s linear;
+    }
+
+    .productCard .imgBox {
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+        transition: .3s linear;
+        border-radius: 10px;
+    }
+
+    .productCard img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: .3s linear;
+    }
+
+    .productCard h3 {
+        font-size: 20px;
+        color: #000;
+        margin: 10px 0;
+    }
+
+    .productCard p {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .productCard .price {
+        font-size: 20px;
+        color: #000000;
+        font-weight: bold;
+        display: block;
+    }
+
+    .productCard b {
+        font-weight: normal;
+        font-size: 13px;
+    }
+
+    .productCard .sold {
+        float: left;
+        font-size: 16px;
+    }
+
+     .productCard .sold span {
+        font-style: normal;
+     }
+
+    .productCard .rating {
+        float: left;
+        font-size: 14px;
+        margin: 2px;
+        font-style: italic;
+    }
+
+    .productCard b span {
+        font-size: 15px;
+        font-style: italic;
+    }
+
+
+
+    .discountRibbon {
+        position: absolute;
+        top: 20px;
+        right: -40px;
+        background-color: #ff4d4d;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        transform: rotate(45deg);
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        z-index: 10;
+        pointer-events: none;
+        width: 130px;
+        text-align: center;
+        padding: 0;
+    }
+
+
+
+
+
+
+
+
+
+    /* Responsive part */
+
+
+@media only screen and (max-width: 1050px) {
+
+    .categoris .categoryBox img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .categoris .categoryBox span {
+        font-size: 20px;
+        line-height: 40px;
+    }
+
+    .categoris .categoryBox {
+        padding: 10px 15px;
+    }
+
+
+    .productCard {
+	    width: calc(25% - 20px);
+    }
+
+
+}
+
+
+
+
+
+@media only screen and (max-width: 900px) {
+
+    .slideBox {
+        width: 100%;
+    }
+
+    .CampaignBox {
+        width: 100%;
+        margin-top: 15px;
+        height: auto;
+    }
+
+    .CampaignBox a {
+        width: calc(20% - 20px);
+        float: left;
+        margin: 10px;
+        text-align: center;
+        font-size: 15px;
+    }
+    .CampaignBox a span {
+        display: block;
+    }
+
+
+    .slideBox .slide img {
+        height: 350px;
+    }
+
+    .slideBox {
+        height: 360px;
+    }
+
+    .categoris .categoryBox img {
+        margin: 0 auto;
+        display: block;
+        float: unset;
+    }
+
+    .categoris .categoryBox span {
+        font-size: 18px;
+        line-height: inherit;
+        text-align: center;
+        width: 100%;
+    }
+
+
+    .productCard {
+	    width: calc(33% - 20px);
+    }
+
+
+
+}
+
+
+
+@media only screen and (max-width: 710px) {
+    .slideBox .slide img {
+        height: 300px;
+    }
+
+    .slideBox {
+        height: 310px;
+    }
+
+    .productCard h3 {
+        font-size: 16px;
+    }
+
+    .productCard p {
+        font-size: 12px;
+    }
+
+
+}
+
+
+ @media only screen and (max-width: 650px) {
+
+    .productCard .imgBox {
+        height: 140px;
+    }
+
+    .productCard img {
+        height: 140px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+     .CampaignBox a {
+        font-size: 25px;
+        padding: 5px;
+    }
+
+    .CampaignBox a span {
+        display: none;
+    }
+
+    .CampaignBox a i {
+        margin-right: 0;
+    }
+
+    .categoris .categoryBox {
+        width: calc(100% / 4 - 20px);
+    }
+
+    .categoris .categoryBox:first-child {
+        width: calc(100% / 4 - 10px);
+        margin-left: 0;
+    }
+    .categoris .categoryBox:nth-child(4) {
+        width: calc(100% / 4 - 10px);
+        margin-right: 0;
+    }
+
+    .categoris .categoryBox:last-child {
+        width: 100%;
+        margin: 0;
+        margin-top: 15px;
+    }
+
+    .categoris .categoryBox:last-child img {
+        display: none;
+    }
+
+    .productCard {
+        width: calc(50% - 20px);
+    }
+
+
+}
+
+
+
+@media only screen and (max-width: 500px) {
+    .slideBox .slide img {
+        height: 250px;
+    }
+
+    .slideBox {
+        height: 260px;
+    }
+
+    .productBox {
+        padding: 15px 5px;
+    }
+
+    .productCard {
+        width: calc(50% - 10px);
+        margin: 5px;
+    }
+
+    .productBoxHeader {
+        margin-bottom: 10px;
+    }
+}
+
+
+@media only screen and (max-width: 450px) {
+
+    .categoris .categoryBox {
+        width: calc(100% / 2 - 20px) !important;
+        margin: 10px;
+    }
+
+    .categoris .categoryBox:first-child {
+        width: calc(100% / 2 - 20px) !important;
+        margin-left: 10px;
+    }
+
+    .categoris .categoryBox:last-child {
+        width: 100% !important;
+        margin: 0px;
+        margin-top: 15px;
+    }
+
+    .productCard img {
+        height: 140px;
+    }
+
+    .productCard .imgBox {
+        height: 140px;
+    }
+
+    .productCard .sold {
+        width: 100%;
+        display: block;
+        font-size: 14px;
+    }
+
+    .productCard .sold span {
+        display: none;
+    }
+
+    .productCard p {
+        display: none;
+    }
+
+    .productCard .rating {
+        font-size: 12px;
+    }
+
+    .productCard b span {
+        font-size: 14px;
+    }
+
+    .productCard .price {
+        font-size: 18px;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 400px) {
+    .slideBox .slide img {
+        height: 230px;
+    }
+
+    .slideBox {
+        height: 240px;
+    }
+    .productCard {
+        width: calc(100% - 20px);
+    }
+
+    .productCard .imgBox {
+        height: 320px;
+    }
+
+    .productCard img {
+        height: 320px;
+        object-fit: cover;
+    }
+
+}

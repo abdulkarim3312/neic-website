@@ -1,0 +1,595 @@
+@font-face {
+  font-family: 'kalpurush';
+  src: url('../font/kalpurush.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ARIAL';
+  src: url('../font/ARIAL.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'kalpurush', sans-serif; 
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.shadow {
+    box-shadow: 1px 1px 10px #202020 !important;
+    padding: 0px;
+    float: left;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}
+
+.header {
+    background: #e9ecef;
+    box-shadow: 0px 0px 1px 2px rgba(0,0,0,.2);
+}
+.headerTop .logo {
+    float: left;
+    margin-left: 100px;
+}
+
+.headerTop .logo img {
+    height: auto;
+    margin: 15px 30px;
+    width: 60px;
+    object-fit: cover;
+}
+
+.headerTop .title { 
+    margin-left: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.headerTop .title h4 {
+    font-size: 28px;
+    margin: 0;
+    color: red;
+}
+
+.headerTop .title h4:first-child {
+    margin-top: 12px;
+    color: #28a745;
+}
+
+.headerTop .title h4:last-child {
+    font-family: 'ARIAL', sans-serif;
+}
+
+.headerTop ul {
+    float: right;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.headerTop ul li {
+    display: inline-block;
+    margin: 0;
+    margin-top: 50px;
+}
+
+.headerTop ul li a {
+    color: #2e1200;
+    font-size: 18px;
+    text-decoration: none;
+    transition: .5s linear;
+}
+
+.headerTop ul li a:hover {
+    color: #28a745;
+    transition: .5s linear;
+}
+
+.headerTop ul li:first-child a {
+    font-weight: bold;
+}
+
+.headerBottom .sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: #ffffff !important;
+}
+
+.headerBottom .container {
+    padding: 0;
+}
+
+.headerBottom .sticky .container {
+    padding: 0 12px;
+}
+
+.headerBottom .sticky #navbarNav {
+    box-shadow: 0px 0px 1px 2px rgba(0,0,0,.2);
+}
+
+.headerBottom {
+    z-index: 9999999;
+}
+
+.headerBottom ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.headerBottom ul li {
+    display: inline-block;
+    margin: 0;
+}
+
+.headerBottom ul li a {
+    background: #28a745;
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 6px;
+    display: inline-block;
+    width: 100%;
+    transition: .5s linear;
+    border: 2px solid #fff;
+}
+
+.headerBottom ul li a:hover {
+    color:#fff;
+}
+
+
+.headerBottom .navbar {
+    padding: 0;
+}
+
+.headerBottom .dropdown ul {
+    width: 100% !important;
+}
+
+.headerBottom .dropdown ul li {
+    display: block !important;
+    margin: 0;
+    width: 100% !important;
+    text-align: left;
+}
+
+.headerBottom .dropdown .dropdown-item {
+    background: #fff;
+    color: #000;
+    border-radius: 5px !important;
+}
+
+.headerBottom .dropdown .dropdown-item:hover {
+    background: #28a745;
+    color: #000;
+    border-radius: 5px !important;
+}
+
+
+.headerBottom .dropdown-menu {
+    margin-top: -2px !important;
+    border-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+
+
+/* Desktop এ hover করলে dropdown খোলে */
+@media (min-width: 992px) {
+  .navbar .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* navbar এর সাথে মিলিয়ে বসবে */
+  }
+}
+
+
+
+
+.slider {
+    width: 100%;
+    margin: 0;
+    background: #e9ecef;
+}
+
+.slider .slick-slide img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
+
+.bodyContent {
+    padding: 10px;
+    background: #fff;
+    float: left;
+}
+
+
+.bodyContent .left {
+    width: 25%;
+    float: left;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.bodyContent .center {
+    width: 55%;
+    float: left;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.bodyContent .right {
+    width: 20%;
+    float: left;
+    overflow: hidden;
+    padding: 5px;
+}
+
+
+.bodyContent .left .card {
+    margin-bottom: 15px;
+}
+
+
+.bodyContent .left .card-header {
+    background: #0da151;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.bodyContent .left .card-body {
+    padding: 10px;
+}
+
+.bodyContent .left .card-body p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #000;
+    font-family: 'kalpurush', sans-serif;
+    margin: 0;
+}
+
+
+.bodyContent .left .card-body ul {
+    list-style-type:square
+}
+
+.bodyContent .left .card-body ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+    transition: .5s linear;
+}
+
+.bodyContent .left .card-body ul li .active {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.bodyContent .left .card-body ul li .active:hover {
+    color: #970000;
+}
+
+.bodyContent .left .card-body ul li a:hover {
+    color: #28a745;
+    transition: .5s linear;
+}
+
+
+
+.bodyContent .center .heading {
+    background: #7c7c7c;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.bodyContent .center .dataList ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 10px;
+}
+
+.bodyContent .center .dataList ul li {
+    width: 100%;
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.bodyContent .center .dataList ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+    transition: .5s linear; 
+}
+
+
+.bodyContent .center .dataList ul li a img {
+    height: 15px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+
+.bodyContent .center .dataList ul li a:hover {
+    color: #28a745;
+    transition: .5s linear; 
+}
+
+.bodyContent .right .card {
+    margin-bottom: 15px;
+}
+
+.bodyContent .right .card-header {
+    background: #0da151;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.bodyContent .right .card-header p {
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.bodyContent .right .card-body img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.bodyContent .right .card-body a {
+    text-decoration: none;
+    text-align: center;
+    color: #000;
+}
+
+.bodyContent .right .card-body a:hover {
+    color: #28a745;
+    transition: .5s linear; 
+}
+
+.bodyContent .right .card-body a span {
+    font-size: 18px;
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+}
+
+
+.bodyContent .right .card:last-child a {
+    margin-bottom: 20px;
+    float: left;
+}
+
+
+
+.footer {
+    background: #e9ecef;
+    padding: 20px;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+
+.footer a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #000;
+}
+
+.footer p {
+     font-family: 'ARIAL', sans-serif;
+}
+
+
+
+
+@media only screen and (max-width: 1200px) {
+ .container {
+    min-width: 100%;
+    padding: 0;
+ }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .headerTop {
+        display: none;
+    }
+
+    .headerBottom .sticky #navbarNav {
+        box-shadow: none;
+    }
+
+    .navbar-toggler {
+        padding: 0;
+        font-size: 15px;
+        border-radius: 0;
+    }
+
+    .headerBottom .navbar {
+        padding: 10px;
+        box-shadow: 0 0 12px -2px #000000bd;
+        z-index: 1000;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+    }
+    
+    .navbar-brand {
+        margin-left: 10px;
+    }
+
+    .navbar-brand img {
+        width: 30px;
+    }
+
+    .headerBottom ul {
+        margin-top: 10px;
+    }
+
+
+    .slider .slick-slide img {
+        height: 400px;
+        object-fit: fill;
+    }
+
+
+    .bodyContent .right .card-header p , .bodyContent .left .card-header , .bodyContent .center .dataList ul li a , .bodyContent .left .card-body ul li a {
+        font-size: 16px;
+    }
+
+    .slider {
+        margin-top: 60px;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+
+
+    .bodyContent .left {
+        width: 30%;
+    }
+
+    .bodyContent .center {
+        width: 70%;
+    }
+
+    .bodyContent .right {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+
+    .bodyContent .right .card:nth-child(1) {
+        width: 220px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    .bodyContent .right .card-body {
+        padding: 0 !important; 
+    }
+
+   .bodyContent .right .card:nth-child(2){
+        width: 100%;
+    }
+
+   .bodyContent .right .card:nth-child(2) a {
+        width: calc(25% - 25px);
+        margin: 10px;
+        display: inline-block;
+    }
+
+    .bodyContent .right .card:nth-child(3) {
+        width: 220px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+}
+
+
+@media only screen and (max-width: 700px) {
+
+    .bodyContent .right .card:nth-child(2) a {
+        width: calc(33% - 25px);
+    }
+
+    .slider .slick-slide img {
+        height: 260px;
+        object-fit: fill;
+    }
+
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .bodyContent .left {
+        width: 100%;
+    }
+
+    .bodyContent .center {
+        width: 100%;
+    }
+
+    .bodyContent .right .card-header p , .bodyContent .left .card-header , .bodyContent .center .dataList ul li a , .bodyContent .left .card-body ul li a {
+        font-size: 18px;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 550px) {
+
+    .bodyContent .right .card:nth-child(2) a {
+        width: calc(50% - 25px);
+    }
+
+    .slider .slick-slide img {
+        height: 240px;
+        object-fit: fill;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    .bodyContent .right .card:nth-child(1) {
+        width: 100%;
+    }
+
+    .bodyContent .right .card:nth-child(2) a {
+        width: calc(100% - 25px);
+    }
+
+    .bodyContent .right .card:nth-child(3) {
+        width: 100%;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 450px) {
+
+    .slider .slick-slide img {
+        height: 200px;
+        object-fit: fill;
+    }
+
+}
+
+

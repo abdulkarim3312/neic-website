@@ -1,0 +1,636 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Ubuntu", sans-serif;
+    background: #fcfcfc;
+}
+
+.btn-close {
+    border-radius: 50% !important;
+    box-shadow: 0px 0px 6px -2px #000 !important;
+    opacity: 0.77 !important;
+    padding: 12px !important;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.hideScrollBody {
+    overflow: hidden;
+    padding-right: 10px;
+}
+
+.nav {
+    margin-bottom: 50px;
+    float: left;
+    width: 100%;
+}
+
+.nav nav {
+    background: #ffffffb5;
+    height: auto;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 0 6px -4px #000;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    padding: 10px 0;
+}
+
+.nav .logo {
+    float: left;
+    width: 50%;
+}
+
+.nav .logo a {
+    float: left;
+}
+
+.nav .logo img {
+    height: 50px;
+    width: 150px;
+    display: flex;
+    object-fit: cover;
+}
+
+
+.nav .menu {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+.nav .menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.nav .menu ul li {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.nav .menu ul li a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 43px;
+}
+
+.nav .menu ul li a:hover {
+    color: #0037ff;
+}
+
+.nav .menu ul li a.active {
+    color: #0037ff;
+}
+
+.nav .menu ul li a i {
+    margin-right: 5px;
+}
+
+.nav .menu ul li a i.fa-shopping-cart {
+    color: #28a745;
+}
+
+.nav .menu ul li a i.fa-user {
+    color: #17a2b8;
+}
+
+.nav .menu ul li a i.fa-sign-in-alt {
+    color: #ffc107;
+}
+
+.nav .menu ul li a i.fa-sign-out-alt {
+    color: #dc3545;
+}
+
+.nav .menu ul li a i.fa-search {
+    color: #6c757d;
+}
+
+.nav .menu ul li a i.fa-bars {
+    display: none;
+}
+
+.nav .menu ul li a i.fa-times {
+    display: none;
+}
+
+
+
+.sideMenuCover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 78%);
+    z-index: 10000;
+    display: none;
+    cursor: no-drop;
+}
+
+.sideMenu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 6px -4px #000;
+    z-index: 10001;
+    transition: right 0.3s ease-in-out;
+    padding: 20px;
+    overflow: auto;
+}
+
+
+.sideMenu .accordion-item {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.sideMenu .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sideMenu .header h3 {
+    float: left;
+}
+
+.sideMenu .header button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Accordion Item Styling */
+.accordion-item {
+    border: none; /* Remove default Bootstrap border */
+    margin-bottom: 5px; /* Space between items */
+    border-radius: 8px; /* Rounded corners for each item */
+    transition: all 0.3s ease-in-out;
+}
+
+.accordion-item:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Accordion Header and Button */
+.accordion-header {
+    border-bottom: none; /* Remove default header border */
+}
+
+.accordion-button {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 15px 20px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: #333;
+	background-color: #d1d0d066;
+	border: none;
+	border-radius: 8px;
+	text-align: left;
+	transition: all 0.3s ease-in-out;
+	position: relative;
+	z-index: 1;
+}
+
+.accordion-button:hover {
+    background-color: #f0f0f0; /* Light hover effect */
+    color: #0d6efd; /* Blue text on hover */
+}
+
+.accordion-button:focus {
+    box-shadow: none; /* Remove focus outline */
+}
+
+
+/* Category Image Styling */
+.category-img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    margin-right: 12px; /* Increased margin */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Accordion Arrow Icon */
+.accordion-button::after {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: auto;
+    content: "";
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+/* Accordion Body */
+.accordion-collapse.collapse {
+    transition: height 0.3s ease-in-out; /* Smooth collapse/expand */
+}
+
+.accordion-body {
+    padding: 10px 0; /* Adjust padding for inner content */
+    background-color: #fcfcfc; /* Slightly different background for body */
+    border-bottom-left-radius: 8px; /* Match item border-radius */
+    border-bottom-right-radius: 8px;
+}
+
+/* Sub-list and Child-list Styling */
+.sub-list {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0px;
+}
+
+.child-list {
+    list-style: none;
+    margin: 0;
+    padding: 0; /* Adjust padding */
+}
+
+.sub-list li, .child-list li {
+    margin-bottom: 3px; /* Smaller margin between list items */
+}
+
+.sub-list a, .child-list a {
+    text-decoration: none;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Increased gap for icon and text */
+    padding: 8px 25px; /* Padding for click area */
+    transition: all 0.2s ease;
+    font-size: 0.95rem; /* Consistent font size */
+}
+
+.accordion-button:not(.collapsed) {
+    color: #000;
+    background-color: #edecec;
+    border: none !important;
+}
+
+.accordion-collapse {
+    transition: height 0.3s ease-in-out;
+    padding: 5px 0;
+}
+
+.accordion-body {
+    padding: 10px 0;
+    background-color: #d1d0d066;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+}
+
+.accordion-body p {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    line-height: 50px;
+    height: 30px;
+    font-style: italic;
+}
+
+/* Indentation for sub and child lists */
+.sub-list a {
+    padding-left: 10px;
+    color: #000;
+    font-weight: bold;
+}
+
+.child-list a {
+    padding-left: 25px;
+    font-weight: normal;
+    color: #413939;
+}
+
+.sub-list a:hover, .child-list a:hover {
+    color: #0d6efd; /* Blue text on hover */
+    background-color: #f5f5f5; /* Light background on hover */
+}
+
+/* Custom Icons for Sub and Child Categories */
+.sub-list a .fa-angle-right {
+    font-size: 0.8rem; /* Smaller arrow icon */
+    color: #999;
+}
+
+.child-list a .fa-circle-dot {
+    font-size: 0.6rem; /* Smaller dot icon */
+    color: #999;
+}
+
+.sub-list a:hover .fa-angle-right,
+.child-list a:hover .fa-circle-dot {
+    color: #0d6efd; /* Blue icon on hover */
+}
+
+
+.mobileNav {
+    display: none; /* শুধু মোবাইল স্ক্রিনে show হবে */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 8px 0;
+    border-top: 1px solid #ddd;
+}
+
+.mobileNav {
+    display: none; /* শুধু মোবাইল স্ক্রিনে */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffffb5; /* স্বচ্ছ ব্যাকগ্রাউন্ড */
+    backdrop-filter: blur(4px) saturate(180%); /* ব্লার + গ্লসি ইফেক্ট */
+    -webkit-backdrop-filter: blur(4px) saturate(180%);
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 8px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: 'Ubuntu', sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Flex Layout */
+.mobileNav ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mobileNav ul li {
+    list-style: none;
+    flex: 1;
+    text-align: center;
+}
+
+.mobileNav ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobileNav ul li a i {
+    font-size: 22px;
+    margin-bottom: 4px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover & Active Effect */
+.mobileNav ul li a:hover i,
+.mobileNav ul li a.active i {
+    color: #ff9800;
+    transform: scale(1.2);
+}
+
+.mobileNav ul li a:hover span,
+.mobileNav ul li a.active span {
+    color: #ff9800;
+}
+
+
+.cartView {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 6px -4px #000;
+    z-index: 10002;
+    transition: right 0.3s ease-in-out;
+    padding: 20px;
+    overflow: auto;
+}
+
+.cartHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cartHeader button{
+    background: none;
+    border: none;
+    font-size: 25px;
+    margin-top: -10px;
+}
+
+
+
+
+
+
+/* footer */
+
+.site-footer {
+    background-color: #1a1a2e;
+    color: #f8f9fa;
+    padding-top: 60px;
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.site-footer h5, .site-footer h6 {
+    color: #fff; /* White color for headings */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.site-footer p, .site-footer li {
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.site-footer .list-unstyled li a {
+    color: rgba(255, 255, 255, 0.7); /* Lighter white for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer .list-unstyled li a:hover {
+    color: #fff; /* White on hover */
+}
+
+.footer-logo img {
+    max-width: 120px; /* Adjust logo size as needed */
+    height: auto;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-right: 15px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #fff;
+}
+
+.app-badges img {
+    max-width: 150px; /* Adjust app badge size */
+    height: auto;
+    border-radius: 5px; /* Slight border-radius for badges */
+}
+
+.dbid-badge {
+    max-width: 120px; /* Adjust DBID badge size */
+    height: auto;
+    margin-top: 20px;
+}
+
+/* Specific styling to match the image's text color */
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Adjustments for smaller screens (Bootstrap handles most, but fine-tuning can be done here) */
+@media (max-width: 768px) {
+    .site-footer .col-md-3 {
+        text-align: center; /* Center content on small screens */
+    }
+
+    .social-icons {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .app-badges {
+        text-align: center;
+    }
+
+    .app-badges a {
+        display: inline-block !important; /* Make app badges inline on small screens */
+        margin: 0 10px 10px 10px;
+    }
+
+    .footer-logo {
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    min-width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+    .nav .logo {
+        float: left;
+        width: 180px;
+    }
+
+    .nav .menu {
+        float: right;
+        width: calc(100% - 200px);
+        text-align: right;
+    }
+}
+
+.nav .menu ul li a img {
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+    background: #fff;
+}
+
+.nav .menu ul li a i {
+    display: none;
+}
+
+@media only screen and (max-width: 710px) {
+
+    .site-footer {
+        margin-bottom: 60px;
+    }
+
+    .nav .menu ul li a span {
+        display: none;
+    }
+
+    .nav .menu ul li a i {
+        display: block;
+    }
+
+    .nav .menu ul li{
+        display: none;
+    }
+
+    .menuBtn {
+        display: inline-block !important;
+        margin-left: 5px;
+    }
+
+    .nav .menu ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 43px;
+        background: #34313a;
+        padding: 7px;
+        text-align: center;
+        margin: 0;
+        padding-left: 12px;
+        border-radius: 5px;
+        transition: .5s ease-in-out;
+        float: right;
+        margin-top: 7px;
+    }
+
+    .nav .menu ul li a:hover {
+        color: #fcd259;
+        background: #000;
+        transition: .5s ease-in-out;
+    }
+    .mobileNav {
+        display: block;
+    }
+}
