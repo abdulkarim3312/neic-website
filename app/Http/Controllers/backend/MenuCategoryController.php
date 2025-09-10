@@ -94,7 +94,7 @@ class MenuCategoryController extends Controller
         $category = new MenuCategory();
         $category->name_bn = $request->name_bn;
         $category->name_en = $request->name_en;
-        $category->slug = Str::slug($request->name_en) . '-' . Str::lower(Str::random(6));
+        $category->slug = Str::slug($request->name_en);
         $category->status = $request->status;
         $category->entry_by = auth()->user()->id;
         $category->entry_time = Carbon::now();

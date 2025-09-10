@@ -17,8 +17,8 @@ class HomeController extends Controller
         return view('frontend.home.searchData' , compact('results'));
     }
 
-    public function details() {
-        $member = CommitteeMemberInfo::first();
+    public function details($id) {
+        $member = CommitteeMemberInfo::find($id);
         return view('frontend.pages.person_details', compact('member'));
     }
 

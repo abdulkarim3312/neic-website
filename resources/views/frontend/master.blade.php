@@ -48,7 +48,7 @@
                         </div>
                         <div class="card-body">
                             @foreach ($members as $item)
-                                <a class="border rounded" href="#">
+                                <a class="border rounded" href="{{ route('person_details', $item->id) }}">
                                     <img src="{{ asset($item->photo) }}" alt="">
                                     <span>{{ $item->name_bn }}</span>
                                 </a>
