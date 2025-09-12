@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
             $table->longText('comment')->nullable();
+            $table->string('agree')->nullable();
             $table->string('attachment')->nullable();
             $table->string('attachment_display_name')->nullable();
             $table->string('user_ip')->nullable();

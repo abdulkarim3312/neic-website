@@ -22,13 +22,17 @@
 
     <div class="dataList">
         <ul>
+            @if (count($attachments) > 0)
+                @foreach ($attachments as $item)
+                    <li>
+                        <a href="">
+                            <img src="{{ asset('frontend/asset/img/right-arrow.webp') }}" alt="right-arrow"> 
+                            <a href="{{ route('commission-report-details', $item->slug) }}">{{ $item->title_bn ?? ''}}</a> 
+                        </a>
+                    </li>
+                @endforeach
+            @endif
             
-            <li>
-                <a href="">
-                    <img src="{{ asset('frontend/asset/img/right-arrow.webp') }}" alt="right-arrow"> 
-                    <span> (নং-৫১০) জাতীয় সংসদের নির্বাচনি এলাকার সীমানার প্রাথমিক তালিকার উপর দাবী/আপত্তি নিষ্পত্তির লক্ষ্যে শুনানীর তারিখ, সময় ও স্থান নির্ধারণ সংক্রান্ত প্রজ্ঞাপন।</span> 
-                </a>
-            </li>
         </ul>
     </div>
 </div>

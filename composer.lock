@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18c8e11bb0ec0af7d6b74d882026b4c4",
+    "content-hash": "ed0f94a13986c04f5de3018104716677",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -3486,7 +3486,7 @@
         },
         {
             "name": "solveit/pro-optimization",
-            "version": "dev-main",
+            "version": "dev-karim",
             "dist": {
                 "type": "path",
                 "url": "public/sovle_it_trick/pro-optimization",
@@ -6467,16 +6467,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v12.4.1",
+            "version": "v12.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "f8354bb5187d78ad972778a5ca0be43b5e142bdb"
+                "reference": "7b5f1f5454ab46f9bb735c23f67c3a88b70e0e4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/f8354bb5187d78ad972778a5ca0be43b5e142bdb",
-                "reference": "f8354bb5187d78ad972778a5ca0be43b5e142bdb",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/7b5f1f5454ab46f9bb735c23f67c3a88b70e0e4a",
+                "reference": "7b5f1f5454ab46f9bb735c23f67c3a88b70e0e4a",
                 "shasum": ""
             },
             "require": {
@@ -6544,7 +6544,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-datatables/issues",
-                "source": "https://github.com/yajra/laravel-datatables/tree/v12.4.1"
+                "source": "https://github.com/yajra/laravel-datatables/tree/v12.4.2"
             },
             "funding": [
                 {
@@ -6552,7 +6552,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-08-29T08:07:48+00:00"
+            "time": "2025-09-09T12:14:05+00:00"
         }
     ],
     "packages-dev": [

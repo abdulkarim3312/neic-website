@@ -105,7 +105,7 @@ class ArticleController extends Controller
 
             if ($request->hasFile('attachment')) {
                 $file = $request->file('attachment');
-                $filename = time() . '_' . Str::slug($file->getClientOriginalName());
+                $filename = time() . '_' . Str::slug($file->getClientOriginalExtension());
                 $file->move(public_path('uploads/attachment'), $filename);
                 $article->attachment = 'uploads/attachment/' . $filename;
                 $article->attachment_display_name = $file->getClientOriginalName();

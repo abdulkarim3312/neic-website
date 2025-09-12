@@ -56,7 +56,7 @@
                         <!-- Logo -->
                         <div class="app-brand justify-content-center mt-5">
                             <a href="/" class="app-brand-link gap-3">
-                                <span class="app-brand-text demo text-heading fw-semibold" style="font-size: 40px;">ICWP</span>
+                                <span class="app-brand-text demo text-heading fw-semibold" style="font-size: 40px;">NEIC</span>
                             </a>
                         </div>
                         <!-- /Logo -->

@@ -22,15 +22,19 @@ class FrontPublicOpinionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'agree' => 'nullable|boolean',
             'name' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:20',
             'comment' => 'required|string',
-            'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx,mp4,mov,avi,mkv|max:512000',
+            'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx,audio,mp4,mov,avi,mkv|max:512000',
         ]);
 
+        $name = $request->agree ? 'N/A' : $request->name;
+        $phone = $request->agree ? 'N/A' : $request->phone;
+
         $opinion = new PublicOpinion();
-        $opinion->name = $request->name;
-        $opinion->phone = $request->phone;
+        $opinion->name = $name;
+        $opinion->phone = $phone;
         $opinion->comment = $request->comment;
         $opinion->user_ip = $request->ip();
         $opinion->user_agent_info = $request->userAgent();

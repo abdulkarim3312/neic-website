@@ -99,7 +99,7 @@ class MenuController extends Controller
             $menu->menu_category_id  = $request->menu_category_id;
             $menu->name_bn = $request->name_bn;
             $menu->name_en = $request->name_en;
-            $menu->slug = Str::slug($request->name_en) . '-' . Str::lower(Str::random(6));
+            $menu->slug = Str::slug($request->name_en);
             $menu->status = $request->status;
             $menu->entry_by = auth()->user()->id;
             $menu->entry_time = Carbon::now();
@@ -151,7 +151,9 @@ class MenuController extends Controller
             $menu->menu_category_id  = $request->menu_category_id;
             $menu->name_bn = $request->name_bn;
             $menu->name_en = $request->name_en;
-            $menu->slug = Str::slug($request->name_en) . '-' . Str::lower(Str::random(6));
+            if ($menu->isDirty('name_en')) {
+                $menu->slug = Str::slug($request->name_en) . '-' . $id;
+            }
             $menu->status = $request->status;
             $menu->last_update_by = auth()->user()->id;
             $menu->last_update_time = Carbon::now();

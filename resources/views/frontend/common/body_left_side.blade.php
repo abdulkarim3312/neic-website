@@ -6,7 +6,7 @@
         <div class="card-body">
             <ul>
                 <li>
-                    <a href="" class="active">
+                    <a href="{{ route('member_list') }}" class="active">
                         সদস্যগণের তালিকা
                     </a>
                 </li>
