@@ -4,81 +4,113 @@
 
 @push('styles')
 <style>
-    .table th {
-        width: 25%;
-        background: #f8f9fa;
+    .opinion-card {
+        max-width: 100%;
+        margin: 30px auto;
+        padding: 25px;
+        background-color: #fefeff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .opinion-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .opinion-header h3 {
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    .opinion-header p {
+        color: #6c757d;
+        margin-bottom: 0;
+    }
+    .opinion-status {
+        margin-top: 5px;
+    }
+    .opinion-body p {
+        line-height: 1.7;
+        margin-bottom: 12px;
+    }
+    .opinion-attachment a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    .opinion-attachment a:hover {
+        text-decoration: underline;
+    }
+    .print-btn {
+        display: block;
+        margin: 0 auto 15px auto;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        padding: 7px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .print-btn:hover {
+        background-color: #218838;
+    }
+
+    /* Print styling */
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+        #printableArea, #printableArea * {
+            visibility: visible;
+        }
+        #printableArea {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+        .print-btn {
+            display: none;
+        }
     }
 </style>
 @endpush
 
 @section('content')
-<div class="card">
-    <div class="card shadow-sm rounded-3">
-        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-            <h5 class="mb-0"><i class="fas fa-comments me-2"></i> Public Opinion Details</h5>
-            <a href="{{ route('comments.index') }}" class="btn btn-light btn-sm">
-                <i class="fas fa-arrow-left me-1"></i> Back
-            </a>
-        </div>
+<div class="opinion-card" id="printableArea">
+    <button class="print-btn" onclick="window.print()">
+        <i class="fas fa-print me-1"></i> Print
+    </button>
+    
 
-        <div class="card-body">
-            <table class="table table-bordered table-striped align-middle">
-                <tbody>
-                    <tr>
-                        <th>Name</th>
-                        <td>{{ $opinion->name ?? '-' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Phone</th>
-                        <td>{{ $opinion->phone ?? '-' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Comment</th>
-                        <td>{{ $opinion->comment ?? '-' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Attachment</th>
-                        <td>
-                            @if($opinion->attachment)
-                                <a href="{{ asset($opinion->attachment) }}" target="_blank" class="text-primary">
-                                    {{ $opinion->attachment_display_name ?? basename($opinion->attachment) }}
-                                </a>
-                            @else
-                                <span class="text-muted">N/A</span>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>User IP</th>
-                        <td>{{ $opinion->user_ip ?? '-' }}</td>
-                    </tr>
-                    <tr>
-                        <th>User Agent Info</th>
-                        <td>
-                            <small class="text-muted">{{ $opinion->user_agent_info ?? '-' }}</small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Entry Time</th>
-                        <td>{{ $opinion->entry_time ? $opinion->entry_time->timezone('Asia/Dhaka')->format('d M, Y h:i:s A') : '-' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Status</th>
-                        <td>
-                            @if($opinion->status)
-                                <span class="badge bg-success">Active</span>
-                            @else
-                                <span class="badge bg-danger">Inactive</span>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Created At</th>
-                        <td>{{ $opinion->created_at?->timezone('Asia/Dhaka')->format('d M, Y h:i:s A') ?? '-' }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+     @php
+        function bn_number($number) {
+            $search = ['0','1','2','3','4','5','6','7','8','9'];
+            $replace = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+            return str_replace($search, $replace, $number);
+        }
+    @endphp
+    <div class="opinion-header">
+        {{-- <h3>{{ $opinion->name ?? '-' }}</h3> --}}
+        @if($opinion->entry_time)
+            <p>তারিখ: {{ bn_number(\Carbon\Carbon::parse($opinion->entry_time)->locale('bn')->timezone('Asia/Dhaka')->isoFormat('D MMMM, YYYY, h:mm:s A')) }}</p>
+        @endif
+    </div>
+
+    <div class="opinion-body">
+        <p><strong>নাম:</strong> {{ $opinion->name ?? '-' }}</p>
+        <p><strong>মোবাইল:</strong> {{ $opinion->phone ?? '-' }}</p>
+        <p><strong>মন্তব্য:</strong> {!! nl2br(e($opinion->comment ?? '-')) !!}</p>
+        <p class="opinion-attachment"><strong>সংযুক্তি:</strong>
+            @if($opinion->attachment)
+                <a href="{{ asset($opinion->attachment) }}" target="_blank">
+                    {{ $opinion->attachment_display_name ?? basename($opinion->attachment) }}
+                </a>
+            @else
+                N/A
+            @endif
+        </p>
+        <p><strong>ইউজার আইপি:</strong> {{ $opinion->user_ip ?? '-' }}</p>
+        <p><strong>ইউজার এজেন্ট:</strong> <small class="text-muted">{{ $opinion->user_agent_info ?? '-' }}</small></p>
+        <p><strong>তারিখ :</strong> {{ $opinion->created_at?->timezone('Asia/Dhaka')->format('d M, Y h:i:s A') ?? '-' }}</p>
     </div>
 </div>
 @endsection

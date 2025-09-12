@@ -1,6 +1,6 @@
 <?php
 
-use UniSharp\LaravelFilemanager\Lfm;
+
 use Illuminate\Support\Facades\Route;
 
 // Controllers
@@ -17,6 +17,7 @@ use App\Http\Controllers\backend\PublicOpinionController;
 use App\Http\Controllers\backend\ArticleCategoryController;
 use App\Http\Controllers\backend\CommitteeMemberController;
 use App\Http\Controllers\backend\AttachmentCategoryController;
+use App\Http\Controllers\backend\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,15 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::get('/comments-view/{id}', [PublicOpinionController::class, 'show'])->name('comments.show');
     Route::delete('/comments-delete/{id}', [PublicOpinionController::class, 'destroy'])->name('comments.destroy');
 
+    // setting route
+    Route::get('/about-us', [SettingController::class, 'aboutUs'])->name('about.us');
+    Route::post('/about-store', [SettingController::class, 'aboutUpdateOrCreate'])->name('about_store');
+    Route::get('/contact', [SettingController::class, 'contact'])->name('contact_update');
+    Route::post('/contact-store', [SettingController::class, 'contactUpdateOrCreate'])->name('contact_store');
+});
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
 /*
@@ -90,9 +100,7 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
 | File Manager Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
-    Lfm::routes();
-});
+
 
 /*
 |--------------------------------------------------------------------------

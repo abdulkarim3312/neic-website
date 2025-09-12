@@ -14,7 +14,7 @@ class PublicOpinionController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $comments = PublicOpinion::query();
+            $comments = PublicOpinion::latest();
             return DataTables::of($comments)
                 ->addColumn('entry_time', function ($row) {
                     if ($row->entry_time) {

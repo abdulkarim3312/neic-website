@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="shortcut icon" href="asset/img/logo.png" type="image/x-icon">
+    @yield('css')
 </head>
 
 <body>
@@ -35,7 +36,7 @@
                             <p>কমিশন চেয়ারম্যান</p>
                         </div>
                         <div class="card-body">
-                            <a href="{{ route('person_details') }}">
+                            <a href="{{ route('person-details') }}">
                                 <img src="{{ asset('frontend/asset/img/shamim-hasnain.jpg') }}" alt="">
                                 <span>বিচারপতি শামীম হাসনাইন</span>
                             </a>
@@ -48,7 +49,7 @@
                         </div>
                         <div class="card-body">
                             @foreach ($members as $item)
-                                <a class="border rounded" href="{{ route('person_details', $item->id) }}">
+                                <a class="border rounded" href="{{ route('person-details') }}">
                                     <img src="{{ asset($item->photo) }}" alt="">
                                     <span>{{ $item->name_bn }}</span>
                                 </a>
@@ -86,28 +87,18 @@
 
 
     <script>
-        $(document).ready(function(){
-            $('.slick').slick({
-                autoplay: true,
-                autoplaySpeed: 2000,
-                fade: true,
-                dots: false,
-                infinite: true,
-                arrows: false,
-                speed: 500,
-                cssEase: 'linear'
-            });
-        });
-        
-        $(document).ready(function () {
-            $(window).on("scroll", function () {
-                if ($(this).scrollTop() > 100) {
-                    $(".navbar").addClass("sticky");
-                } else {
-                    $(".navbar").removeClass("sticky");
+        $('.member-link').on('click', function(e){
+            e.preventDefault();
+            let id = $(this).data('id');
+            $.ajax({
+                url: '/person-details-ajax/' + id,
+                method: 'GET',
+                success: function(response){
+                    $('#member-details').html(response);
                 }
             });
         });
     </script>
+    @yield('script')
 </body>
 </html>

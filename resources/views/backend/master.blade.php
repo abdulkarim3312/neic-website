@@ -115,6 +115,7 @@
       <script src="{{ asset('lib/js/datatables.min.js') }}"></script>
       <script src="{{ asset('lib/js/toastr.min.js') }}"></script>
       <script src="{{ asset('lib/js/sweetalert2@11.js') }}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.2/tinymce.min.js"></script>
       <script>
         
       </script>

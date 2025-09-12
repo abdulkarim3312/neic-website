@@ -11,7 +11,8 @@
 @section('main-content')
 <div class="center mx-auto card rounded-3 p-3" style="width: 75%; background-color: #f8f9fa;">
     @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert" style="background: #49ad92c2;
+    color: black;">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -24,8 +25,18 @@
         <form action="{{ route('comment.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row g-3">
+
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="agree" name="agree" value="1">
+                        <label class="form-check-label fw-semibold" for="agree">
+                            নাম প্রকাশে অনিচ্ছুক
+                        </label>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
-                    <label for="name" class="form-label fw-semibold">আপনার নাম</label>
+                    <label for="name" class="form-label fw-semibold">আপনার নাম (ঐচ্ছিক)</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="আপনার নাম লিখুন">
                     @error('name')
                         <small class="text-danger">{{ $message }}</small>
@@ -33,7 +44,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="phone" class="form-label fw-semibold">ফোন নম্বর</label>
+                    <label for="phone" class="form-label fw-semibold">ফোন নম্বর (ঐচ্ছিক)</label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="আপনার ফোন নম্বর লিখুন">
                     @error('phone')
                         <small class="text-danger">{{ $message }}</small>
@@ -42,7 +53,7 @@
 
                 <div class="col-md-12">
                     <label for="comment" class="form-label fw-semibold">আপনার মতামত</label>
-                    <textarea class="form-control" id="comment" required name="comment" rows="7" placeholder="আপনার মতামত লিখুন"></textarea>
+                    <textarea class="form-control" id="comment" name="comment" rows="7" placeholder="আপনার মতামত লিখুন" required></textarea>
                     @error('comment')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -73,6 +84,18 @@
 
 @section('script')
     <script>
-        
+        document.getElementById('agree').addEventListener('change', function() {
+            const nameInput = document.getElementById('name');
+            const phoneInput = document.getElementById('phone');
+            if(this.checked) {
+                nameInput.value = '';      
+                phoneInput.value = '';      
+                nameInput.setAttribute('readonly', true);
+                phoneInput.setAttribute('readonly', true);
+            } else {
+                nameInput.removeAttribute('readonly');
+                phoneInput.removeAttribute('readonly');
+            }
+        });
     </script>
 @endsection

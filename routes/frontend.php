@@ -2,9 +2,6 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\frontend\home;
-
-use App\Http\Controllers\frontend\product;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\FrontPublicOpinionController;
 
@@ -16,7 +13,14 @@ Route::controller(HomeController::class)->group(function () {
 
 Route::post('/store', [FrontPublicOpinionController::class, 'store'])->name('comment.store');
 
-Route::get('/person-details/{id}', [HomeController::class, 'details'])->name('person_details');
-Route::get('/contact-page', [HomeController::class, 'contactPage'])->name('contact_page');
-Route::get('/comment-page', [HomeController::class, 'commentPage'])->name('comment_page');
+Route::get('/person-details', [HomeController::class, 'details'])->name('person-details');
+Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact');
+Route::get('/about', [HomeController::class, 'aboutPage'])->name('about');
+Route::get('/comment', [HomeController::class, 'commentPage'])->name('comment');
+Route::get('/notice', [HomeController::class, 'noticePage'])->name('notice');
+Route::get('/commission-report', [HomeController::class, 'reportPage'])->name('commission-report');
+Route::get('/commission-report-details/{slug}', [HomeController::class, 'reportDetails'])->name('commission-report-details');
+
+
+Route::get('/list-of-members', [HomeController::class, 'memberList'])->name('member_list');
 
