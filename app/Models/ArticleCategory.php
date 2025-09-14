@@ -24,4 +24,14 @@ class ArticleCategory extends Model
     public function role(){
         return $this->belongsTo(Role::class, 'entry_by', 'id');
     }
+
+    public function entryUser()
+    {
+        return $this->belongsTo(Admin::class, 'entry_by');
+    }
+
+    public function updateUser()
+    {
+        return $this->belongsTo(Admin::class, 'last_update_by');
+    }
 }

@@ -17,14 +17,14 @@ class ArticleCategoryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $categories = ArticleCategory::with('user');
+            $categories = ArticleCategory::query();
             return DataTables::of($categories)
                 ->addColumn('status', function ($row) {
                     $checked = $row->status ? 'checked' : '';
                     return '<input type="checkbox" class="status-toggle big-checkbox" data-id="' . $row->id . '" ' . $checked . '>';
                 })
                 ->addColumn('user', function ($row) {
-                    return $row->user->name ?? '';
+                    return $row->entryUser->name ?? '';
                 })
                 ->addColumn('entry_time', function ($row) {
                     if ($row->entry_time) {
@@ -84,7 +84,7 @@ class ArticleCategoryController extends Controller
         $category->name_en = $request->name_en;
         $category->slug = Str::slug($request->name_en) . '-' . Str::lower(Str::random(6));
         $category->status = $request->status;
-        $category->entry_by = session('user_id');
+        $category->entry_by = auth()->user()->id;
         $category->entry_time = Carbon::now();
         $category->save();
         return redirect()->route('article-categories.index')->with('success', 'created successfully !');
@@ -133,7 +133,7 @@ class ArticleCategoryController extends Controller
         }
 
         $category->status          = $request->status;
-        $category->last_update_by  = session('user_id');
+        $category->last_update_by  = auth()->user()->id;
         $category->last_update_time = Carbon::now(); 
 
         $category->save();
