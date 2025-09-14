@@ -15,6 +15,7 @@ Route::post('/store', [FrontPublicOpinionController::class, 'store'])->name('com
 
 Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact');
 Route::get('/about', [HomeController::class, 'aboutPage'])->name('about');
+Route::get('/commission-activities', [HomeController::class, 'commissionActivity'])->name('commission_activity');
 Route::get('/comment', [HomeController::class, 'commentPage'])->name('comment');
 Route::get('/notice', [HomeController::class, 'noticePage'])->name('notice');
 Route::get('/commission-report', [HomeController::class, 'reportPage'])->name('commission-report');
@@ -24,4 +25,6 @@ Route::get('/commission-report-details/{slug}', [HomeController::class, 'reportD
 // Route::get('/list-of-members', [HomeController::class, 'memberList'])->name('member_list');
 Route::get('/members/{slug}', [HomeController::class, 'memberList'])->name('member_list');
 Route::get('/members-details/{slug}', [HomeController::class, 'memberDetails'])->name('member_details');
+
+Route::get('/gazettes/{slug}', [HomeController::class, 'gazettes'])->name('gazettes');
 

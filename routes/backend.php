@@ -93,6 +93,7 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::post('/about-store', [SettingController::class, 'aboutUpdateOrCreate'])->name('about_store');
     Route::get('/contact', [SettingController::class, 'contact'])->name('contact_update');
     Route::post('/contact-store', [SettingController::class, 'contactUpdateOrCreate'])->name('contact_store');
+    Route::post('/commission-store', [SettingController::class, 'activityUpdateOrCreate'])->name('commission_activity_store');
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {

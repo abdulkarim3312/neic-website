@@ -230,18 +230,11 @@
                 <div data-i18n="Product">Settings</div>
             </a>
             <ul class="menu-sub">
-                
                   <li class="menu-item {{ Route::is('about.us') ? 'active' : '' }}">
                       <a href="{{ route('about.us') }}" class="menu-link">
                           <div data-i18n="Product List">Site Setting</div>
                       </a>
                   </li>
-                
-                  {{-- <li class="menu-item {{ Route::is('contact_update') ? 'active' : '' }}">
-                      <a href="{{ route('contact_update') }}" class="menu-link">
-                          <div data-i18n="Add Contact">Contact</div>
-                      </a>
-                  </li> --}}
             </ul>
         </li>
       @endcan

@@ -15,13 +15,15 @@
                     @endforeach
                 @endif
                 <li>
-                    <a href="javascript:void(0)" class="category-link">
+                    <a href="{{ route('commission_activity') }}" 
+                    class="category-link {{ request()->routeIs('commission_activity') ? 'active' : '' }}">
                         কমিশনের কার্যপরিধি
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)" class="category-link">
-                        গেজেট
+                    <a href="{{ route('gazettes', $attachmentCategories->slug) }}" 
+                    class="category-link {{ request()->routeIs('gazettes') && request()->slug == $attachmentCategories->slug ? 'active' : '' }}">
+                        {{ $attachmentCategories->name_bn ?? ''}}
                     </a>
                 </li>
             </ul>
