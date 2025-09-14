@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
+use App\Models\CommissionActivity;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -33,26 +34,20 @@ class SettingController extends Controller
 
         return redirect()->back()->with('success', 'Updated Successfully!');
     }
-    public function contact()
-    {
-        $contact = Contact::first();
-        return view('backend.setting.contact.create', compact('contact'));
-    }
 
-    public function contactUpdateOrCreate(Request $request)
+    public function activityUpdateOrCreate(Request $request)
     {
         // dd($request->all());
-        $check = Contact::first();
+        $check = CommissionActivity::first();
         $data = [
             'title' => $request->title,
-            'address' => $request->address,
-            'email' => $request->email
+            'description' => $request->description
         ];
 
         if ($check) {
             $check->update($data);
         } else {
-            Contact::create($data);
+            CommissionActivity::create($data);
         }
 
         return redirect()->back()->with('success', 'Updated Successfully!');

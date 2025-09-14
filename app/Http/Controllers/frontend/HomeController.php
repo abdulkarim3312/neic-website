@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Models\MemberCategory;
 use App\Models\CommitteeMemberInfo;
 use App\Http\Controllers\Controller;
+use App\Models\AttachmentCategory;
+use App\Models\CommissionActivity;
 
 class HomeController extends Controller
 {
@@ -26,6 +28,11 @@ class HomeController extends Controller
     public function aboutPage() {
         $about = AboutUs::first();
         return view('frontend.pages.about', compact('about'));
+    }
+
+    public function commissionActivity() {
+        $commissionActivity = CommissionActivity::first();
+        return view('frontend.pages.commission_activity', compact('commissionActivity'));
     }
 
     public function contactPage() {
@@ -53,7 +60,6 @@ class HomeController extends Controller
 
     public function memberList($slug) {
         $category = MemberCategory::where('slug', $slug)->first();
-        // dd($category);
         $memberLists = CommitteeMemberInfo::with('designation')->where('status', 1)
             ->where('member_category_id', $category->id) 
             ->get();
@@ -62,10 +68,17 @@ class HomeController extends Controller
 
     public function memberDetails($slug) {
         $category = MemberCategory::where('slug', $slug)->first();
-        // dd($category);
         $memberDetails = CommitteeMemberInfo::with('designation')->where('status', 1)
             ->where('slug', $slug) 
             ->first();
         return view('frontend.pages.member_details', compact('memberDetails', 'category'));
+    }
+
+    public function gazettes($slug) {
+        $category = AttachmentCategory::where('slug', $slug)->first();
+        $gazettes = Attachment::where('status', 1)
+            ->where('attachment_id', $category->id) 
+            ->get();
+        return view('frontend.pages.gazettes', compact('gazettes', 'category'));
     }
 }

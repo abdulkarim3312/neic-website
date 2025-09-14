@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\AttachmentCategory;
 use App\Models\MenuCategory;
 use App\Models\MemberCategory;
 use App\Models\CommitteeMemberInfo;
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $view->with('members', CommitteeMemberInfo::where('status', 1)->get());
             $view->with('memberCategories', MemberCategory::where('status', 1)->get());
+            $view->with('attachmentCategories', AttachmentCategory::where('name_en', 'gazettes')->where('status', 1)->first());
         });
     }
 }
