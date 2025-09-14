@@ -12,7 +12,8 @@ class SettingController extends Controller
     public function aboutUs()
     {
         $about = AboutUs::first();
-        return view('backend.setting.about.create', compact('about'));
+        $contact = Contact::first();
+        return view('backend.setting.about.create', compact('about', 'contact'));
     }
 
     public function aboutUpdateOrCreate(Request $request)
@@ -40,6 +41,7 @@ class SettingController extends Controller
 
     public function contactUpdateOrCreate(Request $request)
     {
+        // dd($request->all());
         $check = Contact::first();
         $data = [
             'title' => $request->title,

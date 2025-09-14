@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\CommitteeMemberInfo;
 use App\Http\Controllers\Controller;
 use App\Models\Designation;
+use App\Models\MemberCategory;
 use Yajra\DataTables\Facades\DataTables;
 
 class CommitteeMemberController extends Controller
@@ -70,8 +71,9 @@ class CommitteeMemberController extends Controller
      */
     public function create()
     {
+        $categories = MemberCategory::where('status', 1)->get();
         $designations = Designation::where('status', 1)->get();
-        return view('backend.committee_member.create', compact('designations'));
+        return view('backend.committee_member.create', compact('designations', 'categories'));
     }
 
     /**
@@ -81,6 +83,7 @@ class CommitteeMemberController extends Controller
     {
         $request->validate([
             'designation_id' => 'nullable|exists:designations,id',
+            'member_category_id' => 'nullable|exists:member_categories,id',
             'article_url' => 'nullable|url|max:255',
             'entry_by' => 'nullable|integer',
             'last_update_by' => 'nullable|integer',
@@ -102,6 +105,7 @@ class CommitteeMemberController extends Controller
 
             $committeeMember = new CommitteeMemberInfo();
             $committeeMember->designation_id = $request->designation_id;
+            $committeeMember->member_category_id = $request->member_category_id;
             $committeeMember->name_bn = $request->name_bn;
             $committeeMember->name_en = $request->name_en;
             $committeeMember->email = $request->email;
@@ -139,9 +143,11 @@ class CommitteeMemberController extends Controller
      */
     public function edit(string $id)
     {
+        $categories = MemberCategory::where('status', 1)->get();
         $designations = Designation::where('status', 1)->get();
-        $members = CommitteeMemberInfo::findOrFail($id);
-        return view('backend.committee_member.edit', compact('designations', 'members'));
+        $member = CommitteeMemberInfo::findOrFail($id);
+
+        return view('backend.committee_member.edit', compact('designations', 'member', 'categories'));
     }
 
     /**
@@ -151,6 +157,7 @@ class CommitteeMemberController extends Controller
     {
         $request->validate([
             'designation_id' => 'nullable|exists:designations,id',
+            'member_category_id' => 'nullable|exists:member_categories,id',
             'article_url' => 'nullable|url|max:255',
             'slug' => 'nullable|string|max:255',
             'last_update_by' => 'nullable|integer',
@@ -175,6 +182,7 @@ class CommitteeMemberController extends Controller
 
 
             $committeeMember->designation_id = $request->designation_id ?? $committeeMember->designation_id;
+            $committeeMember->member_category_id = $request->member_category_id;
             $committeeMember->name_bn = $request->name_bn;
             $committeeMember->name_en = $request->name_en;
             $committeeMember->email = $request->email;

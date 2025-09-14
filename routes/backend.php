@@ -17,6 +17,7 @@ use App\Http\Controllers\backend\PublicOpinionController;
 use App\Http\Controllers\backend\ArticleCategoryController;
 use App\Http\Controllers\backend\CommitteeMemberController;
 use App\Http\Controllers\backend\AttachmentCategoryController;
+use App\Http\Controllers\backend\MemberCategoryController;
 use App\Http\Controllers\backend\SettingController;
 
 /*
@@ -79,6 +80,9 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::post('/attachment-status-update/{id}', [AttachmentCategoryController::class, 'updateStatus'])->name('attachment_status');
     Route::resource('attachments', AttachmentController::class);
     Route::post('/attachments-status-update/{id}', [AttachmentController::class, 'updateStatus'])->name('attachments_status');
+
+    Route::resource('member-categories', MemberCategoryController::class);
+    Route::post('/member-status-update/{id}', [MemberCategoryController::class, 'updateStatus'])->name('member_status');
 
     Route::get('/comments-list', [PublicOpinionController::class, 'index'])->name('comments.index');
     Route::get('/comments-view/{id}', [PublicOpinionController::class, 'show'])->name('comments.show');

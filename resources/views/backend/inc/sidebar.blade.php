@@ -149,6 +149,7 @@
 
       {{-- @can('designations.manage')  --}}
         <li class="menu-item {{ 
+            Route::is('member-categories.index') || 
             Route::is('designations.index') || 
             Route::is('designations.create') || 
             Route::is('designations.edit') ||
@@ -163,6 +164,13 @@
                 <div data-i18n="Product">Member Manage</div>
             </a>
             <ul class="menu-sub">
+                {{-- @can('designations.view')  --}}
+                  <li class="menu-item {{ Route::is('member-categories.index') || Route::is('member-categories.create') || Route::is('member-categories.edit') ? 'active' : '' }}">
+                      <a href="{{ route('member-categories.index') }}" class="menu-link">
+                          <div data-i18n="Product List">Category</div>
+                      </a>
+                  </li>
+                {{-- @endcan --}}
                 {{-- @can('designations.view')  --}}
                   <li class="menu-item {{ Route::is('designations.index') || Route::is('designations.create') || Route::is('designations.edit') ? 'active' : '' }}">
                       <a href="{{ route('designations.index') }}" class="menu-link">
@@ -225,15 +233,15 @@
                 
                   <li class="menu-item {{ Route::is('about.us') ? 'active' : '' }}">
                       <a href="{{ route('about.us') }}" class="menu-link">
-                          <div data-i18n="Product List">About</div>
+                          <div data-i18n="Product List">Site Setting</div>
                       </a>
                   </li>
                 
-                  <li class="menu-item {{ Route::is('contact_update') ? 'active' : '' }}">
+                  {{-- <li class="menu-item {{ Route::is('contact_update') ? 'active' : '' }}">
                       <a href="{{ route('contact_update') }}" class="menu-link">
                           <div data-i18n="Add Contact">Contact</div>
                       </a>
-                  </li>
+                  </li> --}}
             </ul>
         </li>
       @endcan
