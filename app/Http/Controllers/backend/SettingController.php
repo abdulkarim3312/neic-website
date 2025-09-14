@@ -14,7 +14,8 @@ class SettingController extends Controller
     {
         $about = AboutUs::first();
         $contact = Contact::first();
-        return view('backend.setting.about.create', compact('about', 'contact'));
+        $commissionActivity = CommissionActivity::first();
+        return view('backend.setting.about.create', compact('about', 'contact', 'commissionActivity'));
     }
 
     public function aboutUpdateOrCreate(Request $request)
@@ -37,7 +38,6 @@ class SettingController extends Controller
 
     public function activityUpdateOrCreate(Request $request)
     {
-        // dd($request->all());
         $check = CommissionActivity::first();
         $data = [
             'title' => $request->title,

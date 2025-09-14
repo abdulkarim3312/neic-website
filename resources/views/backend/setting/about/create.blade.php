@@ -103,7 +103,7 @@
                     <div class="col-md-12 col-12 mb-2">
                         <div class="mb-3">
                             <label for="nameInput" class="form-label">Title</label>
-                            <input type="text" class="form-control form-control-sm" value="{{ $about->title ?? '' }}" name="title">
+                            <input type="text" class="form-control form-control-sm" value="{{ $commissionActivity->title ?? '' }}" name="title">
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                     <div class="col-md-12 col-12 mb-2">
                         <div class="mb-3">
                             <label for="nameInput" class="form-label">Description</label>
-                            <textarea name="description" class="form-control my-editor">{{ $about->description ?? '' }}</textarea>
+                            <textarea name="description" class="form-control my-editor">{{ $commissionActivity->description ?? '' }}</textarea>
                         </div>
                     </div>
                 </div>

@@ -32,6 +32,17 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+.card {
+    border-radius: 8px;
+}
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+.table td {
+    vertical-align: middle;
+    padding: 6px 10px;
+}
 </style>
 @endsection
 
@@ -40,42 +51,52 @@
     <h3>{{ $category->name_bn ?? 'Members' }}</h3>
     <hr/>
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>ক্রমিক</th>
-                    <th>ছবি</th>
-                    <th>নাম</th>
-                    <th>পদবি</th>
-                    <th>ফোন</th>
-                    <th>ইমেইল</th>
-                    <th>একশন</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if ($memberLists->isNotEmpty())
-                    @foreach($memberLists as $key => $item)
-                        <tr>
-                            <td>{{ $key + 1 }}</td>
-                            <td>
-                                <img src="{{ asset($item->photo) }}" alt="" width="50" class="rounded">
-                            </td>
-                            <td>{{ $item->name_bn ?? ''}}</td>
-                            <td>{{ optional($item->designation)->name_bn ?? '' }}</td>
-                            <td>{{ $item->mobile ?? '' }}</td>
-                            <td>{{ $item->email ?? '' }}</td>
-                            <td>
-                                <a href="{{ route('member_details', $item->slug) }}" class="btn btn-primary btn-sm">
+    @if ($memberLists->isNotEmpty())
+        @foreach($memberLists as $key => $item)
+            <div class="card mb-3 shadow-sm">
+                <div class="row g-0">
+                    <div class="col-md-3 d-flex align-items-center justify-content-center p-3">
+                        <img src="{{ asset($item->photo) }}" 
+                            alt="{{ $item->name_bn }}" 
+                            class="img-fluid rounded shadow-sm" 
+                            style="max-height: 220px;">
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <table class="table table-bordered mb-3">
+                                <tr>
+                                    <td style="width: 120px;"><strong>নাম</strong></td>
+                                    <td>{{ $item->name_bn ?? '' }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>পদবি</strong></td>
+                                    <td>{{ optional($item->designation)->name_bn ?? '' }}</td>
+                                </tr>
+                                {{-- <tr>
+                                    <td><strong>অফিস</strong></td>
+                                    <td>{{ $item->office ?? 'শিক্ষা মন্ত্রণালয়' }}</td>
+                                </tr> --}}
+                                <tr>
+                                    <td><strong>ইমেইল</strong></td>
+                                    <td>{{ $item->email ?? '' }}</td>
+                                </tr>
+                            </table>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="{{ route('member_details', $item->slug) }}" class="btn btn-sm btn-primary">
                                     বিস্তারিত
                                 </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
-            </tbody>
-        </table>
-    </div>
+                                <div>
+                                    <span class="fw-bold">ফোন (অফিস):</span> {{ $item->mobile ?? '' }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    @endif
 
 </div>
 @endsection
