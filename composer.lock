@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed0f94a13986c04f5de3018104716677",
+    "content-hash": "4c68fc6ad835adfa7593626ee96e4f28",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -3483,75 +3483,6 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.1"
             },
             "time": "2025-09-04T20:59:21+00:00"
-        },
-        {
-            "name": "solveit/pro-optimization",
-            "version": "dev-karim",
-            "dist": {
-                "type": "path",
-                "url": "public/sovle_it_trick/pro-optimization",
-                "reference": "7155a55602d0d9c6983fe8a6ee6f4ac7981d0cdb"
-            },
-            "require": {
-                "illuminate/support": "^12.0 || ^13.0",
-                "php": "^8.1"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.5",
-                "orchestra/testbench": "^8.0",
-                "phpunit/phpunit": "^10.0",
-                "squizlabs/php_codesniffer": "^3.7"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Solveit\\ProOptimization\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Solveit\\ProOptimization\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Solveit\\ProOptimization\\Test\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ],
-                "check-style": [
-                    "phpcs -p --standard=PSR12 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
-                ],
-                "fix-style": [
-                    "phpcbf -p --standard=PSR12 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Solveit Team",
-                    "email": "support@solveitbd.com"
-                }
-            ],
-            "description": "Laravel Page Optimization (Custom Namespace)",
-            "keywords": [
-                "compress",
-                "laravel",
-                "minify",
-                "optimization",
-                "page speed"
-            ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
         },
         {
             "name": "spatie/laravel-permission",
@@ -9852,9 +9783,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "solveit/pro-optimization": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
