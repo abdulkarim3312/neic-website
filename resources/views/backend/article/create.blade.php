@@ -21,6 +21,10 @@
         color: #444;
         line-height: 18px!important;
     }
+    .tox .tox-promotion,
+    .tox .tox-statusbar__branding {
+        display: none !important;
+    }
 </style>
 @endpush
 @section('content')
@@ -127,7 +131,6 @@
 @endsection
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.2/tinymce.min.js"></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 <script>
     tinymce.init({
         selector: 'textarea.my-editor',

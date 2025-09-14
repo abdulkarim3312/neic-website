@@ -96,7 +96,7 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::post('/commission-store', [SettingController::class, 'activityUpdateOrCreate'])->name('commission_activity_store');
 });
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['guest']], function () {
      \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 

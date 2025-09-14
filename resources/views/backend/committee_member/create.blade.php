@@ -22,6 +22,10 @@
         color: #444;
         line-height: 18px!important;
     }
+    .tox .tox-promotion,
+    .tox .tox-statusbar__branding {
+        display: none !important;
+    }
 </style>
 @endpush
 @section('content')
@@ -134,7 +138,7 @@
                         <div class="col-md-12 col-12 mb-2">
                             <div class="mb-4">
                                 <label for="photo">Description</label>
-                               <textarea name="description" class="form-control" id="" cols="30" rows="5"></textarea>
+                               <textarea name="description" class="form-control my-editor" id="" cols="30" rows="5"></textarea>
                                 @error('description')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -166,5 +170,42 @@
             width: '100%' 
         });
     });
+
+
+    tinymce.init({
+        selector: 'textarea.my-editor',
+        promotion: false,
+        height: 400,
+        plugins: 'image link media code lists table',
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image media | code',
+        relative_urls: false,
+        automatic_uploads: true,
+        file_picker_types: 'image file',
+        file_picker_callback: function(callback, value, meta) {
+            let cmsURL = '{{ url("laravel-filemanager") }}?editor=tinymce&type=' + (meta.filetype === 'image' ? 'Images' : 'Files');
+            console.log('Opening Filemanager at:', cmsURL); 
+            let x = window.innerWidth * 0.8;
+            let y = window.innerHeight * 0.8;
+
+            tinyMCE.activeEditor.windowManager.openUrl({
+                url: cmsURL,
+                title: 'File Manager',
+                width: x,
+                height: y,
+                resizable: true,
+                maximizable: true,
+                inline: true,
+                onMessage: function(api, message) {
+                    if (message.content) {
+                        callback(message.content, { alt: '' }); 
+                    }
+                },
+                onClose: function() {
+                    console.log('Filemanager closed');
+                }
+            });
+        }
+    });
+    
 </script>
 @endpush
