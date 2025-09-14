@@ -39,7 +39,21 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6 col-12 mb-2">
+                        <div class="col-md-4 col-12 mb-2">
+                            <div class="mb-4">
+                                <label for="member_category_id">Category</label>
+                                <select name="member_category_id" class="select2" required>
+                                    <option value="">--Select--</option>
+                                    @foreach ($categories as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name_en ?? '' }}</option>
+                                    @endforeach
+                                </select>
+                                @error('member_category_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12 mb-2">
                             <div class="mb-4">
                                 <label for="designation_id">Designation</label>
                                 <select name="designation_id" class="select2" required>
@@ -53,7 +67,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6 col-12 mb-2">
+                        <div class="col-md-4 col-12 mb-2">
                             <div class="mb-4">
                                 <label for="status">Status</label>
                                 <select name="status" class="form-select form-select-sm">

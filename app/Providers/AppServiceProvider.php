@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\View;
 use App\Models\MenuCategory;
+use App\Models\MemberCategory;
+use App\Models\CommitteeMemberInfo;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,11 +24,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
-            $menuCategories = MenuCategory::with('menus')
-                                ->where('status', 1)
-                                ->orderBy('id')
-                                ->get();
-            $view->with('menuCategories', $menuCategories);
+            $view->with('members', CommitteeMemberInfo::where('status', 1)->get());
+            $view->with('memberCategories', MemberCategory::where('status', 1)->get());
         });
     }
 }

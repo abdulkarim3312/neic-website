@@ -26,17 +26,13 @@
             @yield('main-content')
 
             @if (Route::currentRouteName() == 'home.index')
-            @php
-                $members = App\Models\CommitteeMemberInfo::where('status', 1)->get();
-                $usersCount = App\Models\Admin::count();
-            @endphp
                 <div class="right">
                     <div class="card ">
                         <div class="card-header">
                             <p>কমিশন চেয়ারম্যান</p>
                         </div>
                         <div class="card-body">
-                            <a href="{{ route('person-details') }}">
+                            <a href="#">
                                 <img src="{{ asset('frontend/asset/img/shamim-hasnain.jpg') }}" alt="">
                                 <span>বিচারপতি শামীম হাসনাইন</span>
                             </a>
@@ -48,28 +44,14 @@
                             <p>কমিশনের সদস্যবৃন্দ</p>
                         </div>
                         <div class="card-body">
-                            @foreach ($members as $item)
-                                <a class="border rounded" href="{{ route('person-details') }}">
-                                    <img src="{{ asset($item->photo) }}" alt="">
-                                    <span>{{ $item->name_bn }}</span>
-                                </a>
-                            @endforeach
-                            {{-- <a class="border rounded" href="details.html">
-                                <img src="{{ asset('frontend/asset/img/icon-image-male.jpg') }}" alt="">
-                                <span>শামীম আল মামুন</span>
-                            </a>
-                            <a class="border rounded" href="details.html">
-                                <img src="{{ asset('frontend/asset/img/icon-image-male.jpg') }}" alt="">
-                                <span>কাজী মাহফুজুল হক</span>
-                            </a>
-                            <a class="border rounded" href="details.html">
-                                <img src="{{ asset('frontend/asset/img/icon-image-male.jpg') }}" alt="">
-                                <span>তাজরিয়ান আকরাম হোসাইন</span>
-                            </a>
-                            <a class="border rounded" href="details.html">
-                                <img src="{{ asset('frontend/asset/img/icon-image-male.jpg') }}" alt="">
-                                <span>মো. আবদুল আলীম</span>
-                            </a> --}}
+                            @if ($members->isNotEmpty())
+                                @foreach ($members as $item)
+                                    <a class="border rounded" href="{{ route('member_details', $item->slug) }}">
+                                        <img src="{{ asset($item->photo) }}" alt="">
+                                        <span>{{ $item->name_bn }}</span>
+                                    </a>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -87,17 +69,7 @@
 
 
     <script>
-        $('.member-link').on('click', function(e){
-            e.preventDefault();
-            let id = $(this).data('id');
-            $.ajax({
-                url: '/person-details-ajax/' + id,
-                method: 'GET',
-                success: function(response){
-                    $('#member-details').html(response);
-                }
-            });
-        });
+        
     </script>
     @yield('script')
 </body>

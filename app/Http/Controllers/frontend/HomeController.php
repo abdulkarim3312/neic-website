@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\frontend;
 
 use DB;
-use Illuminate\Http\Request;
-use App\Models\CommitteeMemberInfo;
-use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
 use App\Models\Article;
-use App\Models\Attachment;
 use App\Models\Contact;
+use App\Models\Attachment;
+use Illuminate\Http\Request;
+use App\Models\MemberCategory;
+use App\Models\CommitteeMemberInfo;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -20,11 +21,6 @@ class HomeController extends Controller
     }
     public function searchData(Request $req) {
         return view('frontend.home.searchData' , compact('results'));
-    }
-
-    public function details() {
-        $data = CommitteeMemberInfo::first();
-        return view('frontend.pages.person_details', compact('data'));
     }
 
     public function aboutPage() {
@@ -55,8 +51,21 @@ class HomeController extends Controller
         return view('frontend.pages.report_details', compact('article'));
     }
 
-    public function memberList() {
-        $article = CommitteeMemberInfo::get();
-        return view('frontend.pages.member_list', compact('article'));
+    public function memberList($slug) {
+        $category = MemberCategory::where('slug', $slug)->first();
+        // dd($category);
+        $memberLists = CommitteeMemberInfo::with('designation')->where('status', 1)
+            ->where('member_category_id', $category->id) 
+            ->get();
+        return view('frontend.pages.member_list', compact('memberLists', 'category'));
+    }
+
+    public function memberDetails($slug) {
+        $category = MemberCategory::where('slug', $slug)->first();
+        // dd($category);
+        $memberDetails = CommitteeMemberInfo::with('designation')->where('status', 1)
+            ->where('slug', $slug) 
+            ->first();
+        return view('frontend.pages.member_details', compact('memberDetails', 'category'));
     }
 }

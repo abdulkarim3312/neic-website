@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('committee_member_infos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('designation_id')->nullable();
+            $table->unsignedBigInteger('member_category_id')->nullable();
             $table->string('name_bn')->nullable();
             $table->string('name_en')->nullable();
             $table->string('email')->nullable();
@@ -31,6 +32,9 @@ return new class extends Migration
 
             $table->foreign('designation_id')
                   ->references('id')->on('designations')
+                  ->onDelete('set null');
+            $table->foreign('member_category_id')
+                  ->references('id')->on('member_categories')
                   ->onDelete('set null');
         });
     }

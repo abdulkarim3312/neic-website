@@ -24,6 +24,11 @@ class CommitteeMemberInfo extends Model
         return $this->belongsTo(Designation::class, 'designation_id');
     }
 
+    public function category()
+    {
+        return $this->belongsTo(MemberCategory::class, 'member_category_id');
+    }
+
     public function entryUser()
     {
         return $this->belongsTo(Admin::class, 'entry_by');

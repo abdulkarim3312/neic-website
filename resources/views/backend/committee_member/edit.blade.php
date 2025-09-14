@@ -33,19 +33,33 @@
         </a>
     </div>
     <div class="card-body">
-        <form action="{{ route('committee-members.update', $members->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('committee-members.update', $member->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6 col-12 mb-2">
+                        <div class="col-md-4 col-12 mb-2">
+                            <div class="mb-4">
+                                <label for="member_category_id">Category</label>
+                                <select name="member_category_id" class="select2" required>
+                                    <option value="">--Select--</option>
+                                    @foreach ($categories as $item)
+                                        <option value="{{ $item->id }}" {{ $member->member_category_id ==  $item->id ? 'selected': ''}}>{{ $item->name_en ?? '' }}</option>
+                                    @endforeach
+                                </select>
+                                @error('member_category_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12 mb-2">
                             <div class="mb-4">
                                 <label for="designation_id">Designation</label>
                                 <select name="designation_id" class="select2" required>
                                     <option value="">--Select--</option>
                                     @foreach ($designations as $item)
-                                        <option value="{{ $item->id }}" {{ $members->designation_id ==  $item->id ? 'selected': ''}}>{{ $item->name_en ?? '' }}</option>
+                                        <option value="{{ $item->id }}" {{ $member->designation_id ==  $item->id ? 'selected': ''}}>{{ $item->name_en ?? '' }}</option>
                                     @endforeach
                                 </select>
                                 @error('designation_id')
@@ -53,19 +67,19 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6 col-12 mb-2">
+                        <div class="col-md-4 col-12 mb-2">
                             <div class="mb-4">
                                 <label for="status">Status</label>
                                 <select name="status" class="form-select form-select-sm">
-                                    <option value="1" {{ $members->status == 1 ? 'selected': '' }}>Active</option>
-                                    <option value="0" {{ $members->status == 0 ? 'selected': '' }}>Inactive</option>
+                                    <option value="1" {{ $member->status == 1 ? 'selected': '' }}>Active</option>
+                                    <option value="0" {{ $member->status == 0 ? 'selected': '' }}>Inactive</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-4 col-12 mb-2">
                             <div class="mb-3">
                                 <label for="nameInput" class="form-label">Bangla Name</label>
-                                <input type="text" class="form-control form-control-sm" value="{{ $members->name_bn ?? ''}}" required name="name_bn" placeholder="name">
+                                <input type="text" class="form-control form-control-sm" value="{{ $member->name_bn ?? ''}}" required name="name_bn" placeholder="name">
                                 @error('name_bn')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -74,7 +88,7 @@
                         <div class="col-md-4 col-12 mb-2">
                             <div class="mb-3">
                                 <label for="nameInput" class="form-label">English Name</label>
-                                <input type="text" class="form-control form-control-sm" value="{{ $members->name_en ?? ''}}" required name="name_en" placeholder="name">
+                                <input type="text" class="form-control form-control-sm" value="{{ $member->name_en ?? ''}}" required name="name_en" placeholder="name">
                                 @error('name_en')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -83,7 +97,7 @@
                         <div class="col-md-4 col-12 mb-2">
                             <div class="mb-3">
                                 <label for="nameInput" class="form-label">Mobile</label>
-                                <input type="text" class="form-control form-control-sm" value="{{ $members->mobile ?? ''}}" required name="mobile" placeholder="mobile">
+                                <input type="text" class="form-control form-control-sm" value="{{ $member->mobile ?? ''}}" required name="mobile" placeholder="mobile">
                                 @error('mobile')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -92,7 +106,7 @@
                         <div class="col-md-4 col-12 mb-2">
                             <div class="mb-3">
                                 <label for="nameInput">Email</label>
-                                <input type="email" class="form-control form-control-sm" value="{{ $members->email ?? ''}}" required name="email" placeholder="email">
+                                <input type="email" class="form-control form-control-sm" value="{{ $member->email ?? ''}}" required name="email" placeholder="email">
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -101,7 +115,7 @@
                         <div class="col-md-4 col-12 mb-2">
                             <div class="mb-4">
                                 <label for="article_url">Article Url</label>
-                               <input type="text" class="form-control form-control-sm" value="{{ $members->article_url ?? ''}}" required name="article_url" placeholder="url">
+                               <input type="text" class="form-control form-control-sm" value="{{ $member->article_url ?? ''}}" required name="article_url" placeholder="url">
                                 @error('article_url')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -119,7 +133,7 @@
                         <div class="col-md-12 col-12 mb-2">
                             <div class="mb-4">
                                 <label for="photo">Description</label>
-                               <textarea name="description" class="form-control" id="" cols="30" rows="5">{{ $members->description ?? ''}}</textarea>
+                               <textarea name="description" class="form-control" id="" cols="30" rows="5">{{ $member->description ?? ''}}</textarea>
                                 @error('description')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
